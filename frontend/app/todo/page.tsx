@@ -1,13 +1,21 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
-import TodoComponent  from '../../components/Todo';
 import { createTodo, getTodos } from '../../services/todoService';
 import { Todo } from '../../types/todo';
+import Nav from '@/components/nav';
+import styles from './page.module.css'
+import { CImage } from '@coreui/react';
+
+const buttenNames = {
+  Home: "/",
+  Logout: "logout",
+}
 
 const Todos: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [text, setText] = useState('');
+  const [taskDescription, setText] = useState('');
+  const [title, setTitle] = useState('');
 
   useEffect(() => {
     const fetchTodos = async () => {
@@ -25,27 +33,50 @@ const Todos: React.FC = () => {
     e.preventDefault();
     const token = localStorage.getItem('token');
     if (token) {
-      const newTodo = await createTodo(text, token);
+      const newTodo = await createTodo(title, taskDescription, token);
       setTodos([...todos, newTodo]);
       setText('');
+      setTitle('');
     }
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="New todo"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <button type="submit">Add Todo</button>
-      </form>
-      <div>
-        <h1>ok</h1>
+    <main>
+      <Nav buttenNames={buttenNames}/>
+      <div className='d-flex justify-content-center'>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <input
+            type="text"
+            placeholder="Task Title"
+            value={title}
+            className={styles.formFiled}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <textarea
+            placeholder="Task Description"
+            rows={5}
+            cols={10}
+            value={taskDescription}
+            onChange={(e) => setText(e.target.value)}
+            className={styles.formFiled}
+          >
+            
+          </textarea>
+          <button type="submit" className={styles.formButton}>Add Todo</button>
+        </form>
       </div>
-    </div>
+      <div className='d-flex justify-content-center'>
+        <div className={styles.taskDiv}>
+          <img src="/book-03.jpg" alt="Book Image" />
+          <div className={styles.taskInnerDiv}>
+            <h2>Title</h2>
+            <p>text to description of the task</p>
+          </div>
+          
+        </div>
+      </div>
+      
+    </main>
   );
 };
 

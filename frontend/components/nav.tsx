@@ -11,7 +11,7 @@ const Nav: React.FC<{buttenNames: Record<string, string>}> = ({buttenNames})=> {
         <>
             <CNavbar expand="lg" className="navContainer">
             <CContainer fluid>
-            <CImage src="book-03.jpg" alt="Book Image"/>
+            <CImage src="/book-03.jpg" alt="Book Image"/>
                 <CNavbarToggler
                 aria-label="Toggle navigation"
                 aria-expanded={visible}
@@ -19,7 +19,7 @@ const Nav: React.FC<{buttenNames: Record<string, string>}> = ({buttenNames})=> {
                 />
                 <CCollapse className="navbar-collapse d-flex justify-content-end" visible={visible}>
                 <CNavbarNav as="nav">
-                    {Object.keys(buttenNames).map((name) => (<Link href={buttenNames[name]} className="navLink">{name}</Link>))}
+                    {Object.keys(buttenNames).map((name) => (<Link href={buttenNames[name]} className="navLink" key={name}>{name}</Link>))}
                 </CNavbarNav>
                 </CCollapse>
             </CContainer>

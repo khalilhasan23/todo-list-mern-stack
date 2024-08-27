@@ -3,6 +3,14 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { login } from '../../../services/authService';
+import Nav from '@/components/nav';
+import styles from './page.module.css'
+
+const buttenNames = {
+  Home: "/",
+  Login: "login",
+  Register: "register"
+}
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -22,21 +30,31 @@ const Login: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit">Login</button>
-    </form>
+    <main>
+      <Nav buttenNames={buttenNames} />
+      <div className='d-flex justify-content-center'>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            className={styles.formFiled}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            className={styles.formFiled}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit" className={styles.formButton}>Login</button>
+          <button type="submit" className={styles.formButton}>Reset Password</button>
+      </form>
+      </div>
+      
+    </main>
+    
   );
 };
 

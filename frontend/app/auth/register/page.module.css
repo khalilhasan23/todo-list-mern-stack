@@ -1,0 +1,22 @@
+.form{
+    margin: 100px;
+}
+
+.formFiled{
+    display: block;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    border-style: hidden;
+    padding: 5px;
+    width: 500px;
+}
+
+.formButton{
+    padding: 10px;
+    border-radius: 18px;
+    border-style: hidden;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: black;
+    color: white;
+}

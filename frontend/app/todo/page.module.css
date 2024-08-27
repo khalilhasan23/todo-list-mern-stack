@@ -1,0 +1,35 @@
+.form{
+    margin: 50px;
+}
+
+.formFiled{
+    display: block;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    border-style: hidden;
+    padding: 5px;
+    width: 300px;
+}
+
+.formButton{
+    padding: 10px;
+    border-radius: 18px;
+    border-style: hidden;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: black;
+    color: white;
+}
+
+.taskDiv{
+    background-color: #312537;
+    color: white;
+    padding: 33px;
+    border-radius: 50px;
+    width: 1200px;
+}
+
+.taskInnerDiv{
+    margin-left: 176px;
+    margin-top: -95px;
+}

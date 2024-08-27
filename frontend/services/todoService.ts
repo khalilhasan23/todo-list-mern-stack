@@ -1,7 +1,7 @@
 import api from './api';
 //todo update this file to fit your app for example change the the urls 
-export const createTodo = async (text: string, token: string) => {
-  const response = await api.post('/todos', { text }, {
+export const createTodo = async (titel: string, taskDescription: string, token: string) => {
+  const response = await api.post('/todos', { titel, taskDescription }, {
     headers: {
       'x-auth-token': token
     }
