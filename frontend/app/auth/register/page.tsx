@@ -1,12 +1,14 @@
+"use client"
+
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { register } from '../services/authService';
+import { useRouter } from 'next/navigation';
+import { register } from '../../../services/authService';
 
 const Register: React.FC = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,7 +16,7 @@ const Register: React.FC = () => {
     
     try {
       await register(username, email, password);
-      navigate('/login');
+      router.push('/auth/login');
     } catch (err) {
       console.error('Error registering');
     }

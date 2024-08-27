@@ -1,7 +1,9 @@
+"use client"
+
 import React, { useEffect, useState } from 'react';
-import TodoComponent  from '../components/Todo';
-import { createTodo, getTodos } from '../services/todoService';
-import { Todo } from '../types/todo';
+import TodoComponent  from '../../components/Todo';
+import { createTodo, getTodos } from '../../services/todoService';
+import { Todo } from '../../types/todo';
 
 const Todos: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -41,9 +43,7 @@ const Todos: React.FC = () => {
         <button type="submit">Add Todo</button>
       </form>
       <div>
-        {todos.map((todo: any) => (
-          <TodoComponent  key={todo._id} text={todo.text} completed={todo.completed} />
-        ))}
+        <h1>ok</h1>
       </div>
     </div>
   );

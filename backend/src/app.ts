@@ -18,6 +18,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
-app.use('/api/todos', todoRoutes);
+app.use('/api/todos', todoRoutes); //todo change it to fit your web applicaton
 
 export default app;

@@ -9,7 +9,7 @@ const validate = <T>(schema: JSONSchemaType<T>) => {
         const valid = validate(req.body);
 
         if (!valid) {
-        return res.status(400).json({ message: 'Validation failed', errors: validate.errors });
+          return res.status(400).json({ message: 'Validation failed', errors: validate.errors });
         }
 
         next();

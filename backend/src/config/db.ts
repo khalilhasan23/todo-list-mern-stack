@@ -1,8 +1,7 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
-
-dotenv.config({ path: `C:\\Users\\Khalil\\Desktop\\mern-ts-docker\\backend\\.env` });
+dotenv.config();
 
 const connectDB = async () => {
   try {

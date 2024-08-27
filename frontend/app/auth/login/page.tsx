@@ -1,11 +1,13 @@
+"use client"
+
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { login } from '../services/authService';
+import { useRouter } from 'next/navigation';
+import { login } from '../../../services/authService';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const router = useRouter(); // Next.js router
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,7 +15,7 @@ const Login: React.FC = () => {
     try {
       const data = await login(email, password);
       localStorage.setItem('token', data.token);
-      navigate('/todos'); //todo change this to fit your app 
+      router.push('/todo'); //todo change this to fit your app 
     } catch (err) {
       console.error('Error logging in');
     }

@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:20
 
 WORKDIR /app
 
@@ -10,4 +10,4 @@ COPY . .
 
 RUN npm run build
 
-CMD ["npx", "serve", "-s", "build"]
+CMD ["npm", "run", "dev"]
