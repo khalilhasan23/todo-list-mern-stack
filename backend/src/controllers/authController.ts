@@ -5,6 +5,7 @@ import User from '../models/User';
 
 const register = async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
+  
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) {

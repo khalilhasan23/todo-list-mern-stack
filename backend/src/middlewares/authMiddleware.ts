@@ -6,7 +6,9 @@ interface IRequest extends Request {
 }
 
 const authMiddleware = (req: IRequest, res: Response, next: NextFunction) => {
+
   const token = req.header('x-auth-token');
+  
 
   if (!token) {
     return res.status(401).json({ message: 'No token, authorization denied' });

@@ -1,11 +1,11 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
-import { createTodo, getTodos } from '../../services/todoService';
+import { createTodo, deleteTodo, getTodos, updateTodo } from '../../services/todoService';
 import { Todo } from '../../types/todo';
 import Nav from '@/components/nav';
 import styles from './page.module.css'
-import { CCol, CCollapse, CContainer, CImage, CNavbar, CNavbarBrand, CNavbarNav, CNavbarToggler, CRow } from "@coreui/react";
+import { CCol, CContainer, CRow } from "@coreui/react";
 
 const buttenNames = {
   Home: "/",
@@ -16,6 +16,7 @@ const Todos: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [taskDescription, setText] = useState('');
   const [title, setTitle] = useState('');
+  const [completed, setCompleted] = useState(false);
 
   useEffect(() => {
     const fetchTodos = async () => {
@@ -28,6 +29,25 @@ const Todos: React.FC = () => {
 
     fetchTodos();
   }, []);
+
+  const handleCompleted = async (todo: Todo, isCompleted: boolean) => {
+    const token = localStorage.getItem('token');
+    todo.completed = isCompleted;
+    const updatedTodos = todos.filter(element => element._id !== todo._id);
+    if (token) {
+      await updateTodo(todo, token)
+      setTodos([...updatedTodos, todo]);
+    }
+  }
+
+  const handleDelete = async (element: Todo) => {
+    const updatedTodos = todos.filter(todo => todo._id !== element._id);
+    const token = localStorage.getItem('token');
+    if (token) {
+      await deleteTodo(element, token)
+    }
+    setTodos(updatedTodos);
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -81,20 +101,20 @@ const Todos: React.FC = () => {
         </CRow>
       </CContainer>
 
-      {todos.map((element) => (
-        <CContainer key={element.title} className='mb-5'>
+      {todos.map((element) => (!element.completed ?
+        <CContainer key={element.titel} className='mb-5'>
           <div className={styles.taskDiv}>
               <img src="/book-03.jpg" alt="Book Image" />
               <div className={styles.taskInnerDiv}>
-                <h2>{element.title}</h2>
-                <p>{element.description}</p>
-            </div>
+                <h2>{element.titel}</h2>
+                <p>{element.taskDescription}</p>
+              </div>
             <div className={`${styles.taskButton} d-flex justify-content-end`}>
-                <button className={`${styles.formButton} mx-3`}>Completed</button>
-                <button className={`${styles.formButton} mx-3`}>Delete</button>
+              <button className={`${styles.formButton} mx-3`} onClick={() => handleCompleted(element, true)}>Completed</button>
+              <button className={`${styles.formButton} mx-3`} onClick={() => handleDelete(element)}>Delete</button>
             </div>
           </div>
-        </CContainer>
+        </CContainer>: <></>
       ))}
 
       <div className='d-flex justify-content-center'>
@@ -111,20 +131,20 @@ const Todos: React.FC = () => {
         </CRow>
       </CContainer>
 
-      {todos.map((element) => (
-        <CContainer className='mb-5' key={element.title}>
+      {todos.map((element) => (element.completed ?
+        <CContainer className='mb-5' key={element.titel}>
           <div className={styles.taskDoneDiv}>
             <img src="/book-03.jpg" alt="Book Image" />
             <div className={styles.taskInnerDiv}>
-              <h2>{element.title}</h2>
-              <p>{element.description}</p>
+              <h2>{element.titel}</h2>
+              <p>{element.taskDescription}</p>
             </div>
             <div className={`${styles.taskButton} d-flex justify-content-end`}>
-                <button className={`${styles.doneButton} mx-3`}>Undo</button>
-                <button className={`${styles.doneButton} mx-3`}>Delete</button>
+                <button className={`${styles.doneButton} mx-3`} onClick={() => handleCompleted(element, false)}>Undo</button>
+                <button className={`${styles.doneButton} mx-3`} onClick={() => handleDelete(element)}>Delete</button>
             </div>
           </div>
-        </CContainer>
+        </CContainer>: <></>
       ))}
       
 
