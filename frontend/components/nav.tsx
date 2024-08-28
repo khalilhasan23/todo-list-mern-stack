@@ -3,10 +3,18 @@
 import { CCollapse, CContainer, CImage, CNavbar, CNavbarNav, CNavbarToggler } from "@coreui/react";
 import { useState } from "react";
 import Link from 'next/link';
+import { useRouter } from "next/navigation";
 
 
 const Nav: React.FC<{buttenNames: Record<string, string>}> = ({buttenNames})=> {
     const [visible, setVisible] = useState(false)
+    const router = useRouter(); 
+
+    const handleLogout = () => {
+        localStorage.removeItem("token"); 
+        router.push("/auth/login"); 
+    };
+
     return (
         <>
             <CNavbar expand="lg" className="navContainer">
@@ -19,7 +27,14 @@ const Nav: React.FC<{buttenNames: Record<string, string>}> = ({buttenNames})=> {
                 />
                 <CCollapse className="navbar-collapse d-flex justify-content-end" visible={visible}>
                 <CNavbarNav as="nav">
-                    {Object.keys(buttenNames).map((name) => (<Link href={buttenNames[name]} className="navLink" key={name}>{name}</Link>))}
+                    {/* {Object.keys(buttenNames).map((name) => (<Link href={buttenNames[name]} className="navLink" key={name}>{name}</Link>))} */}
+                    {Object.keys(buttenNames).map((name) =>
+                        name === "Logout" ? (<button key={name} onClick={handleLogout} className="navLink">{name}</button>) : (
+                            <Link href={buttenNames[name]} className="navLink" key={name}>
+                                {name}
+                            </Link>
+                        )
+                    )}
                 </CNavbarNav>
                 </CCollapse>
             </CContainer>
