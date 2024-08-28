@@ -27,7 +27,6 @@ const Nav: React.FC<{buttenNames: Record<string, string>}> = ({buttenNames})=> {
                 />
                 <CCollapse className="navbar-collapse d-flex justify-content-end" visible={visible}>
                 <CNavbarNav as="nav">
-                    {/* {Object.keys(buttenNames).map((name) => (<Link href={buttenNames[name]} className="navLink" key={name}>{name}</Link>))} */}
                     {Object.keys(buttenNames).map((name) =>
                         name === "Logout" ? (<button key={name} onClick={handleLogout} className="navLink">{name}</button>) : (
                             <Link href={buttenNames[name]} className="navLink" key={name}>
