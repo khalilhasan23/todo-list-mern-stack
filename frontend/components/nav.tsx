@@ -1,6 +1,6 @@
 "use client"
 
-import { CCollapse, CContainer, CImage, CNavbar, CNavbarBrand, CNavbarNav, CNavbarToggler, CNavLink } from "@coreui/react";
+import { CCollapse, CContainer, CImage, CNavbar, CNavbarNav, CNavbarToggler } from "@coreui/react";
 import { useState } from "react";
 import Link from 'next/link';
 

@@ -29,7 +29,61 @@
     width: 1200px;
 }
 
+.taskDoneDiv{
+    background-color: #4D6844;
+    color: white;
+    padding: 33px;
+    border-radius: 50px;
+    width: 1200px;
+}
+
 .taskInnerDiv{
     margin-left: 176px;
     margin-top: -95px;
+}
+
+.tasksSaperator{
+    margin-top: 20px;
+    border-width: thin;
+    background-color: white;
+    border-style: solid;
+    border-color: white;
+    margin-bottom: 20px;
+    width: 1500px;
+}
+
+.done{
+    padding: 10px;
+    border-radius: 18px;
+    border-style: hidden;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #4D6844;
+    color: white;
+
+}
+
+.toDone{
+    padding: 10px;
+    border-radius: 18px;
+    border-style: hidden;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #312537;
+    color: white;
+
+}
+
+.taskButton{
+    margin-top: -35px
+}
+
+.doneButton{
+    padding: 10px;
+    border-radius: 18px;
+    border-style: hidden;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #163204;
+    color: white;
 }

@@ -5,7 +5,7 @@ import { createTodo, getTodos } from '../../services/todoService';
 import { Todo } from '../../types/todo';
 import Nav from '@/components/nav';
 import styles from './page.module.css'
-import { CImage } from '@coreui/react';
+import { CCol, CCollapse, CContainer, CImage, CNavbar, CNavbarBrand, CNavbarNav, CNavbarToggler, CRow } from "@coreui/react";
 
 const buttenNames = {
   Home: "/",
@@ -42,8 +42,8 @@ const Todos: React.FC = () => {
 
   return (
     <main>
-      <Nav buttenNames={buttenNames}/>
-      <div className='d-flex justify-content-center'>
+      <Nav buttenNames={buttenNames} />
+      <CContainer  className='d-flex justify-content-center'>
         <form onSubmit={handleSubmit} className={styles.form}>
           <input
             type="text"
@@ -62,20 +62,72 @@ const Todos: React.FC = () => {
           >
             
           </textarea>
-          <button type="submit" className={styles.formButton}>Add Todo</button>
+          <button type="submit" className={styles.formButton}>Add Task</button>
         </form>
-      </div>
+      </CContainer>
+
       <div className='d-flex justify-content-center'>
-        <div className={styles.taskDiv}>
-          <img src="/book-03.jpg" alt="Book Image" />
-          <div className={styles.taskInnerDiv}>
-            <h2>Title</h2>
-            <p>text to description of the task</p>
-          </div>
-          
+        <div className={styles.tasksSaperator}>
+
         </div>
       </div>
+
+      <CContainer className='mt-2 mb-5'>
+        <CRow>
+          <CCol xs={2} className='d-flex justify-content-start'>
+            <div className={styles.toDone}>To-Do</div>
+          </CCol>
+          <CCol xs={10}></CCol>
+        </CRow>
+      </CContainer>
+
+      {todos.map((element) => (
+        <CContainer key={element.title} className='mb-5'>
+          <div className={styles.taskDiv}>
+              <img src="/book-03.jpg" alt="Book Image" />
+              <div className={styles.taskInnerDiv}>
+                <h2>{element.title}</h2>
+                <p>{element.description}</p>
+            </div>
+            <div className={`${styles.taskButton} d-flex justify-content-end`}>
+                <button className={`${styles.formButton} mx-3`}>Completed</button>
+                <button className={`${styles.formButton} mx-3`}>Delete</button>
+            </div>
+          </div>
+        </CContainer>
+      ))}
+
+      <div className='d-flex justify-content-center'>
+        <div className={styles.tasksSaperator}>
+        </div>
+      </div>
+
+      <CContainer className='mt-2 mb-5'>
+        <CRow>
+          <CCol xs={1} className='d-flex justify-content-center'>
+            <div className={styles.done}>Done</div>
+          </CCol>
+          <CCol xs={11}></CCol>
+        </CRow>
+      </CContainer>
+
+      {todos.map((element) => (
+        <CContainer className='mb-5' key={element.title}>
+          <div className={styles.taskDoneDiv}>
+            <img src="/book-03.jpg" alt="Book Image" />
+            <div className={styles.taskInnerDiv}>
+              <h2>{element.title}</h2>
+              <p>{element.description}</p>
+            </div>
+            <div className={`${styles.taskButton} d-flex justify-content-end`}>
+                <button className={`${styles.doneButton} mx-3`}>Undo</button>
+                <button className={`${styles.doneButton} mx-3`}>Delete</button>
+            </div>
+          </div>
+        </CContainer>
+      ))}
       
+
     </main>
   );
 };
