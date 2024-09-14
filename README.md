@@ -1,0 +1,139 @@
+
+# Todo List Web Application (MERN Stack)
+
+A simple and user-friendly Todo List web application built using the MERN (MongoDB, Express, React, Node.js) stack. Users can register, log in, create their personal todo lists, mark tasks as completed, and manage their daily tasks efficiently.
+
+## Table of Contents
+
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+
+## Features
+
+- User authentication: Register and log in securely.
+- Create a todo list with multiple tasks.
+- Mark tasks as completed or pending.
+- Edit or delete tasks from the todo list.
+- Fully responsive design for desktop and mobile devices.
+
+## project screenshot
+![](https://github.com/khalilhasan23/todo-list-mern-stack/blob/main/project-images/Capture.PNG)
+![](https://github.com/khalilhasan23/todo-list-mern-stack/blob/main/project-images/Capture2.PNG)
+![](https://github.com/khalilhasan23/todo-list-mern-stack/blob/main/project-images/Capture1.PNG)
+![](https://github.com/khalilhasan23/todo-list-mern-stack/blob/main/project-images/Capture3.PNG)
+
+## Technologies Used
+
+- **Frontend:**
+  - React.js
+  - next.js
+  - Axios (for HTTP requests)
+  
+- **Backend:**
+  - Node.js
+  - Express.js
+  - MongoDB (with Mongoose for object modeling)
+  
+- **Authentication:**
+  - JSON Web Tokens (JWT) for secure authentication
+  - bcrypt.js for password hashing
+
+## Installation
+
+To run this project locally, follow these steps:
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (v12 or higher)
+- [MongoDB](https://www.mongodb.com/) (Local instance or MongoDB Atlas)
+- [Git](https://git-scm.com/)
+
+### Backend Setup
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/khalilhasan23/todo-list-mern.git
+    cd todo-list-mern/backend
+    ```
+
+2. Install the dependencies:
+
+    ```bash
+    npm install
+    ```
+
+3. Create a `.env` file in the root of the `backend` folder and add your environment variables:
+
+    ```env
+    MONGO_URI=mongodb://localhost:27017/todoapp
+    JWT_SECRET=your_jwt_secret
+    PORT=5000
+    ```
+
+4. Start the backend server:
+
+    ```bash
+    npm start
+    ```
+
+### Frontend Setup
+
+1. Navigate to the `frontend` directory:
+
+    ```bash
+    cd ../frontend
+    ```
+
+2. Install the dependencies:
+
+    ```bash
+    npm install
+    ```
+
+3. Start the frontend development server:
+
+    ```bash
+    npm start
+    ```
+
+
+## Usage
+
+1. Register a new user by clicking the "Register" button on the home page.
+2. After registering, log in using your credentials.
+3. Once logged in, you can create, edit, and delete tasks on your todo list.
+4. Mark tasks as "completed" by clicking the checkbox next to each task.
+5. Log out when you're done using the application.
+
+## API Endpoints
+
+The backend exposes the following API endpoints:
+
+### Authentication
+
+- **POST** `/api/auth/register`  
+  Registers a new user.
+  
+- **POST** `/api/auth/login`  
+  Authenticates a user and returns a JWT.
+
+### Todos
+
+- **GET** `/api/todos`  
+  Fetches the list of todos for the authenticated user.
+
+- **POST** `/api/todos`  
+  Creates a new todo task.
+
+- **PUT** `/api/todos`  
+  Updates an existing todo task (e.g., mark as completed).
+
+- **DELETE** `/api/todos/:id`  
+  Deletes a todo task.
+
