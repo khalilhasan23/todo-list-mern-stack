@@ -28,8 +28,8 @@ A simple and user-friendly Todo List web application built using the MERN (Mongo
 ## Technologies Used
 
 - **Frontend:**
-  - React.js
-  - next.js
+  - Next.js (React Framework)
+  - React Hooks
   - Axios (for HTTP requests)
   
 - **Backend:**
@@ -41,9 +41,12 @@ A simple and user-friendly Todo List web application built using the MERN (Mongo
   - JSON Web Tokens (JWT) for secure authentication
   - bcrypt.js for password hashing
 
+- **Containerization:**
+  - Docker
+
 ## Installation
 
-To run this project locally, follow these steps:
+To run this project locally without Docker, follow these steps:
 
 ### Prerequisites
 
@@ -52,6 +55,8 @@ Make sure you have the following installed:
 - [Node.js](https://nodejs.org/) (v12 or higher)
 - [MongoDB](https://www.mongodb.com/) (Local instance or MongoDB Atlas)
 - [Git](https://git-scm.com/)
+- [Docker](https://www.docker.com/get-started) (for running with Docker)
+
 
 ### Backend Setup
 
@@ -76,11 +81,6 @@ Make sure you have the following installed:
     PORT=5000
     ```
 
-4. Start the backend server:
-
-    ```bash
-    npm start
-    ```
 
 ### Frontend Setup
 
@@ -99,7 +99,7 @@ Make sure you have the following installed:
 3. Start the frontend development server:
 
     ```bash
-    npm start
+    npm run dev
     ```
 
 
@@ -136,4 +136,33 @@ The backend exposes the following API endpoints:
 
 - **DELETE** `/api/todos/:id`  
   Deletes a todo task.
+
+
+  ## Docker
+
+To run the application using Docker, follow these steps:
+
+### Prerequisites
+
+Make sure Docker is installed on your machine. If not, follow the instructions [here](https://docs.docker.com/get-docker/).
+
+### Build and Run the Docker Containers
+
+1. Build and run the containers using Docker Compose:
+
+    ```bash
+    docker-compose up --build
+    ```
+
+2. Once the containers are up and running, the application will be accessible at:
+
+    - Frontend (Next.js): [http://localhost:3000](http://localhost:3000)
+    - Backend (Express API): [http://localhost:5000](http://localhost:5000)
+
+### Stopping the Containers
+
+To stop the running containers:
+
+```bash
+docker-compose down
 
