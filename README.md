@@ -137,8 +137,7 @@ The backend exposes the following API endpoints:
 - **DELETE** `/api/todos/:id`  
   Deletes a todo task.
 
-
-  ## Docker
+## Docker
 
 To run the application using Docker, follow these steps:
 
