@@ -21,10 +21,7 @@ A simple and user-friendly Todo List web application built using the MERN (Mongo
 - Fully responsive design for desktop and mobile devices.
 
 ## project screenshot
-![](https://github.com/khalilhasan23/todo-list-mern-stack/blob/main/project-images/Capture.PNG)
-![](https://github.com/khalilhasan23/todo-list-mern-stack/blob/main/project-images/Capture2.PNG)
-![](https://github.com/khalilhasan23/todo-list-mern-stack/blob/main/project-images/Capture1.PNG)
-![](https://github.com/khalilhasan23/todo-list-mern-stack/blob/main/project-images/Capture3.PNG)
+![]()
 
 ## Technologies Used
 
